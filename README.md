@@ -6,7 +6,7 @@
 ![yt-dlp](https://img.shields.io/badge/yt--dlp-latest-red)
 
 <p align="center">
-  <img src="https://i.imgur.com/YourLogoHere.png" alt="TuS-DL Logo" width="200"/>
+  <img src="https://i.imgur.com/Ky9EwSB.png" alt="TuS-DL Logo" width="200"/>
 </p>
 
 ## 🌟 Overview
@@ -27,8 +27,8 @@
 ## 🖥️ Screenshots
 
 <p align="center">
-  <img src="https://i.imgur.com/screenshot1.png" width="45%" />
-  <img src="https://i.imgur.com/screenshot2.png" width="45%" />
+  <img src="https://i.imgur.com/zY7xKzc.png" width="45%" />
+  <img src="https://i.imgur.com/3GuhoR8.png" width="45%" />
 </p>
 
 ## 🚀 Installation
@@ -161,7 +161,7 @@ This tool is for educational purposes only. Always respect copyright laws and te
 
 ## 📬 Contact
 
-Have questions? Reach out at [your.email@example.com](mailto:your.email@example.com)
+Have questions? Reach out at [Telegram](https://t.me/im_trt)
 
 ## 💫 Star History
 
