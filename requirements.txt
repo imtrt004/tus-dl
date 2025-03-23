@@ -1,0 +1,6 @@
+flask
+yt-dlp
+werkzeug
+ffmpeg-python
+requests
+humanize

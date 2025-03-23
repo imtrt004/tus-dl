@@ -1,0 +1,259 @@
+{% extends "base.html" %}
+
+{% block title %}About TuS-DL - Universal Media Downloader{% endblock %}
+
+{% block content %}
+<div class="space-y-12">
+    <!-- Hero Section -->
+    <section class="text-center py-8 md:py-12">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+                About <span class="text-highlight">TuS-DL</span>
+            </h1>
+            <p class="text-text-secondary text-lg md:text-xl max-w-3xl mx-auto">
+                Learn more about our universal media downloader and how it works
+            </p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="max-w-4xl mx-auto">
+        <div class="card">
+            <div class="p-6 md:p-8 space-y-8">
+                <div class="flex flex-col gap-6">
+                    <h3 class="text-2xl font-semibold">Our Story</h3>
+                    <div class="space-y-4">
+                        <p class="text-text-secondary leading-relaxed">
+                            TuS-DL was created out of the need for a reliable, easy-to-use solution for downloading media from across the web. We built this tool to help users save content for offline viewing, research, and educational purposes.
+                        </p>
+                        <p class="text-text-secondary leading-relaxed">
+                            Our focus has always been on combining powerful features with a simple, intuitive interface that anyone can use. TuS-DL is continuously updated to support the latest websites and maintain compatibility with evolving web standards.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-6">
+                    <h3 class="text-2xl font-semibold">How It Works</h3>
+                    <div class="space-y-6">
+                        <div class="flex flex-col md:flex-row items-start gap-4">
+                            <div class="bg-bg-hover rounded-full flex items-center justify-center w-10 h-10 shrink-0 text-accent-blue">
+                                <span class="font-medium">1</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium text-text-primary">Enter the URL</h4>
+                                <p class="text-text-secondary mt-1 text-sm">Paste the link to the video or media you want to download.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col md:flex-row items-start gap-4">
+                            <div class="bg-bg-hover rounded-full flex items-center justify-center w-10 h-10 shrink-0 text-accent-blue">
+                                <span class="font-medium">2</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium text-text-primary">Select Format</h4>
+                                <p class="text-text-secondary mt-1 text-sm">Choose your preferred format and quality for the download.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col md:flex-row items-start gap-4">
+                            <div class="bg-bg-hover rounded-full flex items-center justify-center w-10 h-10 shrink-0 text-accent-blue">
+                                <span class="font-medium">3</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium text-text-primary">Watch Real-time Progress</h4>
+                                <p class="text-text-secondary mt-1 text-sm">View detailed download status with speed, size, and estimated time.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col md:flex-row items-start gap-4">
+                            <div class="bg-bg-hover rounded-full flex items-center justify-center w-10 h-10 shrink-0 text-accent-blue">
+                                <span class="font-medium">4</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium text-text-primary">Download Your File</h4>
+                                <p class="text-text-secondary mt-1 text-sm">When processing is complete, save your file with one click.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="max-w-4xl mx-auto">
+        <div class="card">
+            <div class="p-6 md:p-8 space-y-6">
+                <div class="flex flex-col gap-6">
+                    <h3 class="text-2xl font-semibold">Technology</h3>
+                    <p class="text-text-secondary">
+                        TuS-DL is built using modern web technologies and open source components
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-bg-hover p-5 rounded-lg border border-border-subtle">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-bg-card w-8 h-8 rounded-md flex items-center justify-center mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent-blue" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <h4 class="text-lg font-medium text-text-primary">Backend</h4>
+                        </div>
+                        <ul class="space-y-2 text-text-secondary text-sm">
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                Python Flask framework
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                yt-dlp download engine
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                FFmpeg for media processing
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                Server-Sent Events for real-time updates
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-bg-hover p-5 rounded-lg border border-border-subtle">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-bg-card w-8 h-8 rounded-md flex items-center justify-center mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent-blue" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <h4 class="text-lg font-medium text-text-primary">Frontend</h4>
+                        </div>
+                        <ul class="space-y-2 text-text-secondary text-sm">
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                HTML5 & CSS3
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                Tailwind CSS for responsive design
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                Vanilla JavaScript
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                Custom animations and transitions
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="max-w-4xl mx-auto py-8">
+        <div class="card overflow-hidden">
+            <div class="bg-bg-hover p-8">
+                <h3 class="text-2xl font-semibold text-center mb-6">Our Team</h3>
+                <p class="text-text-secondary text-center max-w-xl mx-auto">
+                    TuS-DL is an open-source project maintained by a community of developers passionate about creating useful tools for the web.
+                </p>
+            </div>
+            <div class="p-8 text-center">
+                <div class="inline-block bg-bg-hover p-1 rounded-lg border border-border-subtle mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-accent-blue" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </div>
+                <a href="https://github.com/yourusername/tus-dl" class="glass-btn px-6 py-3 rounded-lg inline-flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    Contribute on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="max-w-4xl mx-auto">
+        <h3 class="text-2xl font-semibold text-center mb-8">
+            Frequently Asked Questions
+        </h3>
+
+        <div class="card">
+            <div class="divide-y divide-border-subtle">
+                <div class="p-6">
+                    <h4 class="text-lg font-medium text-text-primary mb-2">Is TuS-DL free to use?</h4>
+                    <p class="text-text-secondary text-sm">Yes, TuS-DL is completely free and open-source. We believe in providing accessible tools for everyone.</p>
+                </div>
+
+                <div class="p-6">
+                    <h4 class="text-lg font-medium text-text-primary mb-2">Is downloading content legal?</h4>
+                    <p class="text-text-secondary text-sm">TuS-DL is meant for downloading content for personal use, such as watching offline or archiving your own content. Always respect copyright laws and terms of service for the websites you use.</p>
+                </div>
+
+                <div class="p-6">
+                    <h4 class="text-lg font-medium text-text-primary mb-2">Why do some downloads require cookies?</h4>
+                    <p class="text-text-secondary text-sm">Some websites require you to be logged in to access certain content. In these cases, TuS-DL needs your browser cookies to authenticate the download request.</p>
+                </div>
+
+                <div class="p-6">
+                    <h4 class="text-lg font-medium text-text-primary mb-2">Are my downloads private?</h4>
+                    <p class="text-text-secondary text-sm">Yes. We don't store any information about what you download, and files are automatically deleted from our servers after you download them.</p>
+                </div>
+
+                <div class="p-6">
+                    <h4 class="text-lg font-medium text-text-primary mb-2">Can I contribute to TuS-DL?</h4>
+                    <p class="text-text-secondary text-sm">Absolutely! Visit our GitHub repository to contribute code, report bugs, or suggest new features. We welcome contributions from developers of all experience levels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="max-w-4xl mx-auto py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="card group">
+                <div class="p-6 text-center">
+                    <div class="text-3xl md:text-4xl font-semibold text-text-primary mb-2">1000+</div>
+                    <p class="text-text-secondary text-sm">Supported Websites</p>
+                </div>
+            </div>
+
+            <div class="card group">
+                <div class="p-6 text-center">
+                    <div class="text-3xl md:text-4xl font-semibold text-text-primary mb-2">100M+</div>
+                    <p class="text-text-secondary text-sm">Monthly Downloads</p>
+                </div>
+            </div>
+
+            <div class="card group">
+                <div class="p-6 text-center">
+                    <div class="text-3xl md:text-4xl font-semibold text-text-primary mb-2">24/7</div>
+                    <p class="text-text-secondary text-sm">Available Worldwide</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-12 text-center">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">
+                Ready to Try TuS-DL?
+            </h2>
+            <p class="text-text-secondary text-lg mb-6">
+                Return to the home page to start downloading your favorite media
+            </p>
+            <a href="/" class="primary-btn px-8 py-4 rounded-lg font-medium inline-block">
+                Get Started
+            </a>
+        </div>
+    </section>
+</div>
+{% endblock %}

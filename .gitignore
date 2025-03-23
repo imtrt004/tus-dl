@@ -1,0 +1,22 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+tests
+dev-requirements.txt
+cookies.txt
+.vscode
+downloads/*
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+.pytest_cache/
+
+# Flask stuff:
+instance/
+.webassets-cache

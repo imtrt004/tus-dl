@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TuS-DL - Universal Media Downloader{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg': {
+                            'dark': '#08080B',
+                            'card': '#12121A',
+                            'hover': '#18181F'
+                        },
+                        'text': {
+                            'primary': '#EFEFF1',
+                            'secondary': '#A1A1AA',
+                            'tertiary': '#52525B'
+                        },
+                        'accent': {
+                            'blue': '#2563EB',
+                            'indigo': '#4F46E5'
+                        },
+                        'border': {
+                            'subtle': 'rgba(63, 63, 70, 0.4)',
+                            'light': 'rgba(82, 82, 91, 0.2)'
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'subtle': '0 2px 10px rgba(0, 0, 0, 0.1)',
+                        'glow': '0 0 20px rgba(37, 99, 235, 0.15)'
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            background-color: #08080B;
+            background-image:
+                radial-gradient(ellipse at top, rgba(59, 130, 246, 0.03), transparent 70%),
+                radial-gradient(ellipse at bottom, rgba(139, 92, 246, 0.03), transparent 70%);
+            min-height: 100vh;
+        }
+
+        .card {
+            background-color: rgba(18, 18, 26, 0.6);
+            border: 1px solid rgba(63, 63, 70, 0.4);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(82, 82, 91, 0.5);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .glass-btn {
+            background: rgba(37, 99, 235, 0.1);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            color: #EFEFF1;
+            transition: all 0.2s ease;
+        }
+
+        .glass-btn:hover {
+            background: rgba(37, 99, 235, 0.15);
+            border-color: rgba(37, 99, 235, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .primary-btn {
+            background: linear-gradient(to right, #2563EB, #4F46E5);
+            color: white;
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .primary-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        .progress-gradient {
+            background: linear-gradient(to right, #2563EB, #4F46E5);
+        }
+
+        /* Highlight effect */
+        .text-highlight {
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .text-highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, #2563EB, #4F46E5);
+            opacity: 0.7;
+        }
+
+        .cursor-dot {
+            position: relative;
+        }
+
+        .cursor-dot::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: -4px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #2563EB;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        /* Status dots */
+        .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-dot.downloading {
+            background-color: #2563EB;
+            animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .status-dot.processing {
+            background-color: #8B5CF6;
+            animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .status-dot.complete {
+            background-color: #10B981;
+        }
+
+        .status-dot.error {
+            background-color: #EF4444;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(18, 18, 26, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(63, 63, 70, 0.7);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(82, 82, 91, 0.8);
+        }
+    </style>
+    <link
+    rel="stylesheet"
+    href="https://atugatran.github.io/FontAwesome6Pro/css/all.min.css"
+  />
+</head>
+<body class="font-sans text-text-primary antialiased">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Nav -->
+        <nav class="sticky top-0 z-10 mb-10">
+            <div class="card">
+                <div class="p-4 flex flex-wrap items-center justify-between">
+                    <a href="/" class="flex items-center space-x-3 mb-2 md:mb-0">
+                        <span class="text-2xl font-semibold text-text-primary">TuS<span class="text-accent-blue">-DL</span><span class="cursor-dot"></span></span>
+                    </a>
+                    <div class="flex space-x-6">
+                        <a href="/" class="text-text-secondary hover:text-text-primary transition duration-300">Home</a>
+                        <a href="/supported_sites" class="text-text-secondary hover:text-text-primary transition duration-300">Supported Sites</a>
+                        <a href="/downloads" class="text-text-secondary hover:text-text-primary transition duration-300">Downloads</a>
+                        <a href="/about" class="text-text-secondary hover:text-text-primary transition duration-300">About</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main content -->
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-16 text-center text-text-tertiary text-sm">
+            <div class="card">
+                <div class="p-6">
+                    <p>© 2025 TuS-DL. For educational purposes only.</p>
+                    <p class="mt-2">
+                        Powered by <a href="https://github.com/yt-dlp/yt-dlp" class="text-accent-blue hover:underline transition" target="_blank">yt-dlp</a> |
+                        <a href="https://github.com/yourusername/tus-dl" class="text-accent-blue hover:underline transition" target="_blank">GitHub</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

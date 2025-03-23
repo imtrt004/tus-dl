@@ -1,0 +1,328 @@
+{% extends "base.html" %}
+
+{% block title %}TuS-DL - Universal Media Downloader{% endblock %}
+
+{% block content %}
+<!-- Keep your existing HTML structure exactly as it is -->
+<div class="space-y-10">
+    <!-- Hero Section -->
+    <section class="text-center py-8 md:py-16">
+        <!-- Existing hero section -->
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-6">
+                Universal Media <span class="text-highlight">Downloader</span>
+            </h1>
+            <p class="text-text-secondary text-lg md:text-xl max-w-3xl mx-auto mb-10">
+                Download videos, audio, and media from 1000+ sites quickly and easily
+            </p>
+
+            <div class="inline-flex items-center justify-center space-x-2 mb-6 px-4 py-2 rounded-full bg-bg-hover border border-border-subtle text-sm text-text-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent-blue" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>Serving 100M+ downloads monthly</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Form -->
+    <section class="max-w-3xl mx-auto">
+        <div class="card">
+            <div class="p-6 md:p-8">
+                <form id="downloadForm" class="space-y-6">
+                    <div class="space-y-2">
+                        <label for="videoUrl" class="block text-text-secondary font-medium">Enter URL</label>
+                        <input
+                            type="url"
+                            id="videoUrl"
+                            placeholder="https://youtube.com/watch?v=..."
+                            class="w-full bg-bg-dark border border-border-subtle rounded-lg p-3 text-text-primary placeholder-text-tertiary focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue"
+                            required
+                        >
+                    </div>
+
+                    <div class="space-y-3">
+                        <p class="block text-text-secondary font-medium">Select Format</p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <label class="flex items-center bg-bg-hover p-3 rounded-lg border border-border-subtle cursor-pointer transition duration-200 hover:bg-opacity-70">
+                                <input type="radio" name="format" value="best" class="hidden peer" checked>
+                                <div class="w-4 h-4 rounded-full border-2 border-border-light mr-3 peer-checked:border-accent-blue flex-shrink-0 flex items-center justify-center">
+                                    <div class="hidden peer-checked:block w-2 h-2 rounded-full bg-accent-blue"></div>
+                                </div>
+                                <span class="text-sm">Best Quality</span>
+                            </label>
+                            <label class="flex items-center bg-bg-hover p-3 rounded-lg border border-border-subtle cursor-pointer transition duration-200 hover:bg-opacity-70">
+                                <input type="radio" name="format" value="1080p" class="hidden peer">
+                                <div class="w-4 h-4 rounded-full border-2 border-border-light mr-3 peer-checked:border-accent-blue flex-shrink-0 flex items-center justify-center">
+                                    <div class="hidden peer-checked:block w-2 h-2 rounded-full bg-accent-blue"></div>
+                                </div>
+                                <span class="text-sm">1080p</span>
+                            </label>
+                            <label class="flex items-center bg-bg-hover p-3 rounded-lg border border-border-subtle cursor-pointer transition duration-200 hover:bg-opacity-70">
+                                <input type="radio" name="format" value="720p" class="hidden peer">
+                                <div class="w-4 h-4 rounded-full border-2 border-border-light mr-3 peer-checked:border-accent-blue flex-shrink-0 flex items-center justify-center">
+                                    <div class="hidden peer-checked:block w-2 h-2 rounded-full bg-accent-blue"></div>
+                                </div>
+                                <span class="text-sm">720p</span>
+                            </label>
+                            <label class="flex items-center bg-bg-hover p-3 rounded-lg border border-border-subtle cursor-pointer transition duration-200 hover:bg-opacity-70">
+                                <input type="radio" name="format" value="audio" class="hidden peer">
+                                <div class="w-4 h-4 rounded-full border-2 border-border-light mr-3 peer-checked:border-accent-blue flex-shrink-0 flex items-center justify-center">
+                                    <div class="hidden peer-checked:block w-2 h-2 rounded-full bg-accent-blue"></div>
+                                </div>
+                                <span class="text-sm">Audio (MP3)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center pt-4">
+                        <button type="submit" id="submitBtn" class="primary-btn px-8 py-3 rounded-lg font-medium">
+                            Download
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Status section -->
+    <section>
+        <div id="status" class="status text-center text-lg"></div>
+    </section>
+
+    <!-- Progress container -->
+    <section id="progressContainer" class="max-w-3xl mx-auto hidden">
+        <div class="card">
+            <div class="p-6 md:p-8 space-y-5">
+                <div class="flex justify-between mb-2">
+                    <div id="progressStatus" class="progress-status text-text-secondary flex items-center">
+                        <span class="status-dot downloading"></span>
+                        <span>Downloading...</span>
+                    </div>
+                    <div id="progressPercent" class="text-text-primary font-medium">0%</div>
+                </div>
+
+                <div class="relative w-full h-2 bg-bg-hover rounded-full overflow-hidden">
+                    <div id="progressBar" class="progress-gradient h-full w-0 rounded-full transition-all duration-300"></div>
+                </div>
+
+                <div class="flex flex-wrap justify-between text-sm text-text-tertiary">
+                    <div id="progressSize">Calculating...</div>
+                    <div id="progressSpeed">0 KiB/s</div>
+                    <div id="progressEta">ETA: calculating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Result container -->
+    <section id="result" class="max-w-3xl mx-auto hidden">
+        <div class="card">
+            <div class="p-6 md:p-8 space-y-6">
+                <div class="flex justify-center">
+                    <div class="w-14 h-14 bg-bg-hover rounded-full flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-accent-blue" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="text-center space-y-1">
+                    <h3 class="text-xl font-semibold text-text-primary">Download Complete!</h3>
+                    <p class="text-text-secondary">Your file is ready to download</p>
+                </div>
+
+                <div class="download-info space-y-3 p-4 bg-bg-hover rounded-lg border border-border-subtle">
+                    <p id="videoTitle" class="text-text-primary font-medium"></p>
+                    <p id="formatInfo" class="text-text-secondary text-sm"></p>
+                </div>
+
+                <div class="flex justify-center">
+                    <a id="downloadBtn" href="#" class="primary-btn px-8 py-3 rounded-lg font-medium">
+                        Download Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features section and other sections unchanged -->
+  
+
+    <div class="max-w-5xl mx-auto py-10 text-2xl font-bold text-center card">
+        <p>
+            {% if has_cookies %}
+            <span class="cookie-status-icon">✅</span> YouTube authentication cookies are set
+            {% else %}
+            <span class="cookie-status-icon">⚠️</span> No YouTube cookies found. Some videos may require authentication
+            {% endif %}
+        </p>
+        <button id="manageCookiesBtn" class="primary-btn px-3 py-1 rounded-md text-sm">Manage Cookies</button>
+    </div>
+
+    <!-- Keep the rest of your beautiful design as is -->
+    <section class="max-w-5xl mx-auto pt-20">
+        <!-- Your existing features section - unchanged -->
+        <h2 class="text-2xl font-bold mb-12 text-center">
+            Features
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="card group">
+                <div class="p-6 space-y-4">
+                    <div class="bg-bg-hover w-10 h-10 rounded-full flex items-center justify-center mb-4 group-hover:bg-accent-blue/10 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent-blue" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-text-primary">1000+ Supported Sites</h3>
+                    <p class="text-text-secondary text-sm leading-relaxed">Download from YouTube, Instagram, TikTok, Twitter, and many more platforms.</p>
+                </div>
+            </div>
+
+            <div class="card group">
+                <div class="p-6 space-y-4">
+                    <div class="bg-bg-hover w-10 h-10 rounded-full flex items-center justify-center mb-4 group-hover:bg-accent-blue/10 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent-blue" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-text-primary">Multiple Formats</h3>
+                    <p class="text-text-secondary text-sm leading-relaxed">Choose between high-quality video or audio extraction in various formats.</p>
+                </div>
+            </div>
+
+            <div class="card group">
+                <div class="p-6 space-y-4">
+                    <div class="bg-bg-hover w-10 h-10 rounded-full flex items-center justify-center mb-4 group-hover:bg-accent-blue/10 transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent-blue" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-text-primary">Privacy-Focused</h3>
+                    <p class="text-text-secondary text-sm leading-relaxed">Files are automatically deleted after download for your security and privacy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial section -->
+    <section class="max-w-4xl mx-auto py-20">
+        <div class="card">
+            <div class="p-6 md:p-10 text-center">
+                <svg class="w-12 h-12 mx-auto mb-4 text-accent-blue opacity-50" fill="currentColor" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+                </svg>
+                <p class="text-text-secondary text-lg italic mb-6">TuS-DL is hands-down the best downloader I've used. It's fast, supports all the sites I need, and has a clean interface that's easy to understand.</p>
+                <div class="font-medium">
+                    <p class="text-text-primary">Sarah Johnson</p>
+                    <p class="text-text-tertiary text-sm">Content Creator</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cookie Modal -->
+    <div id="cookieModal" class="hidden fixed inset-0 bg-bg-dark/80 backdrop-blur-sm z-50 flex items-center justify-center">
+        <div class="card max-w-xl w-full mx-4">
+            <div class="p-6 md:p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-medium text-text-primary">Authentication Required</h3>
+                    <button id="closeModalBtn" class="text-text-tertiary hover:text-text-primary transition duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <p class="text-text-secondary mb-6">
+                    This site requires cookies or authentication. You can either extract cookies from your browser or upload a cookie file.
+                </p>
+
+                <div class="space-y-6">
+                    <!-- Extract Cookies Form -->
+                    <div class="bg-bg-hover p-4 rounded-lg border border-border-subtle">
+                        <h4 class="font-medium mb-3 text-text-primary">Extract Cookies from Browser</h4>
+                        <form id="extractCookiesForm" class="space-y-4">
+                            <div>
+                                <select id="browserSelect" class="w-full bg-bg-dark border border-border-subtle rounded-lg p-2 text-text-primary focus:outline-none focus:border-accent-blue">
+                                    <option value="chrome">Chrome</option>
+                                    <option value="firefox">Firefox</option>
+                                    <option value="edge">Edge</option>
+                                    <option value="safari">Safari</option>
+                                    <option value="opera">Opera</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="glass-btn px-4 py-2 rounded-lg">
+                                Extract Cookies
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Upload Cookies Form -->
+                    <div class="bg-bg-hover p-4 rounded-lg border border-border-subtle">
+                        <h4 class="font-medium mb-3 text-text-primary">Upload Cookie File</h4>
+                        <form id="uploadCookiesForm" class="space-y-4">
+                            <div>
+                                <input type="file" id="cookieFile" class="w-full bg-bg-dark border border-border-subtle rounded-lg p-2 text-text-primary focus:outline-none focus:border-accent-blue">
+                            </div>
+                            <button type="submit" class="glass-btn px-4 py-2 rounded-lg">
+                                Upload Cookies
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+/* Progress bar styles */
+.progress-gradient {
+    background: linear-gradient(90deg, #4a9fff 0%, #6ebcff 100%);
+}
+
+/* Status dot styles */
+.status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status-dot.downloading {
+    background-color: #4a9fff;
+    animation: pulse 1.5s infinite;
+}
+
+.status-dot.processing {
+    background-color: #fbbf24;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(74, 159, 255, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba(74, 159, 255, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(74, 159, 255, 0);
+    }
+}
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+{% endblock %}

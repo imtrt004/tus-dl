@@ -1,0 +1,449 @@
+{% extends "base.html" %}
+
+{% block title %}Supported Sites - TuS-DL{% endblock %}
+
+{% block content %}
+<div class="space-y-12">
+    <!-- Hero Section -->
+    <section class="text-center py-8 md:py-12">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+                Supported <span class="text-highlight">Sites</span>
+            </h1>
+            <p class="text-text-secondary text-lg md:text-xl max-w-3xl mx-auto">
+                TuS-DL supports over 1000 sites for video and audio downloads
+            </p>
+        </div>
+    </section>
+
+    <!-- Sites Categories Section -->
+    <section class="max-w-5xl mx-auto">
+        <div class="card">
+            <div class="p-6 md:p-8">
+                <div class="mb-8">
+                    <p class="text-text-secondary text-center mb-4">
+                        Browse some of the most popular sites by category, or use the search box to find a specific site.
+                    </p>
+                    <div class="relative max-w-lg mx-auto">
+                        <input
+                            type="text"
+                            id="siteSearch"
+                            placeholder="Search for a site..."
+                            class="w-full bg-bg-dark border border-border-subtle rounded-lg p-3 pl-10 text-text-primary placeholder-text-tertiary focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue"
+                        >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-text-tertiary absolute left-3 top-1/2 transform -translate-y-1/2" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Category Tabs -->
+                <div class="flex flex-wrap justify-center gap-2 mb-6" id="categoryTabs">
+                    <button class="px-4 py-2 rounded-lg text-sm active bg-bg-hover border border-border-subtle text-text-primary hover:bg-bg-hover/70 transition duration-150" data-category="popular">Popular</button>
+                    <button class="px-4 py-2 rounded-lg text-sm bg-bg-hover/50 border border-border-subtle text-text-secondary hover:bg-bg-hover/70 transition duration-150" data-category="video">Video</button>
+                    <button class="px-4 py-2 rounded-lg text-sm bg-bg-hover/50 border border-border-subtle text-text-secondary hover:bg-bg-hover/70 transition duration-150" data-category="social">Social Media</button>
+                    <button class="px-4 py-2 rounded-lg text-sm bg-bg-hover/50 border border-border-subtle text-text-secondary hover:bg-bg-hover/70 transition duration-150" data-category="music">Music</button>
+                    <button class="px-4 py-2 rounded-lg text-sm bg-bg-hover/50 border border-border-subtle text-text-secondary hover:bg-bg-hover/70 transition duration-150" data-category="learning">Learning</button>
+                    <button class="px-4 py-2 rounded-lg text-sm bg-bg-hover/50 border border-border-subtle text-text-secondary hover:bg-bg-hover/70 transition duration-150" data-category="tv">TV & Movies</button>
+                    <button class="px-4 py-2 rounded-lg text-sm bg-bg-hover/50 border border-border-subtle text-text-secondary hover:bg-bg-hover/70 transition duration-150" data-category="live">Live Streaming</button>
+                </div>
+
+                <!-- Sites Grid -->
+                <div id="sitesGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                    <!-- Popular Sites (displayed by default) -->
+                    <div class="site-card bg-bg-hover border border-border-subtle p-4 rounded-lg text-center hover:border-border-light transition duration-200">
+                        <div class="site-icon mb-2 text-2xl">📺</div>
+                        <div class="site-name text-text-primary text-sm font-medium">YouTube</div>
+                    </div>
+                    <div class="site-card bg-bg-hover border border-border-subtle p-4 rounded-lg text-center hover:border-border-light transition duration-200">
+                        <div class="site-icon mb-2 text-2xl">📸</div>
+                        <div class="site-name text-text-primary text-sm font-medium">Instagram</div>
+                    </div>
+                    <div class="site-card bg-bg-hover border border-border-subtle p-4 rounded-lg text-center hover:border-border-light transition duration-200">
+                        <div class="site-icon mb-2 text-2xl">🎵</div>
+                        <div class="site-name text-text-primary text-sm font-medium">TikTok</div>
+                    </div>
+                    <div class="site-card bg-bg-hover border border-border-subtle p-4 rounded-lg text-center hover:border-border-light transition duration-200">
+                        <div class="site-icon mb-2 text-2xl">🐦</div>
+                        <div class="site-name text-text-primary text-sm font-medium">Twitter</div>
+                    </div>
+                    <div class="site-card bg-bg-hover border border-border-subtle p-4 rounded-lg text-center hover:border-border-light transition duration-200">
+                        <div class="site-icon mb-2 text-2xl">👥</div>
+                        <div class="site-name text-text-primary text-sm font-medium">Facebook</div>
+                    </div>
+                    <div class="site-card bg-bg-hover border border-border-subtle p-4 rounded-lg text-center hover:border-border-light transition duration-200">
+                        <div class="site-icon mb-2 text-2xl">🎬</div>
+                        <div class="site-name text-text-primary text-sm font-medium">Vimeo</div>
+                    </div>
+                    <div class="site-card bg-bg-hover border border-border-subtle p-4 rounded-lg text-center hover:border-border-light transition duration-200">
+                        <div class="site-icon mb-2 text-2xl">🎬</div>
+                        <div class="site-name text-text-primary text-sm font-medium">Dailymotion</div>
+                    </div>
+                    <div class="site-card bg-bg-hover border border-border-subtle p-4 rounded-lg text-center hover:border-border-light transition duration-200">
+                        <div class="site-icon mb-2 text-2xl">🎧</div>
+                        <div class="site-name text-text-primary text-sm font-medium">SoundCloud</div>
+                    </div>
+                    <div class="site-card bg-bg-hover border border-border-subtle p-4 rounded-lg text-center hover:border-border-light transition duration-200">
+                        <div class="site-icon mb-2 text-2xl">🤖</div>
+                        <div class="site-name text-text-primary text-sm font-medium">Reddit</div>
+                    </div>
+                    <div class="site-card bg-bg-hover border border-border-subtle p-4 rounded-lg text-center hover:border-border-light transition duration-200">
+                        <div class="site-icon mb-2 text-2xl">🎮</div>
+                        <div class="site-name text-text-primary text-sm font-medium">Twitch</div>
+                    </div>
+                    <div class="site-card bg-bg-hover border border-border-subtle p-4 rounded-lg text-center hover:border-border-light transition duration-200">
+                        <div class="site-icon mb-2 text-2xl">📱</div>
+                        <div class="site-name text-text-primary text-sm font-medium">Snapchat</div>
+                    </div>
+                    <div class="site-card bg-bg-hover border border-border-subtle p-4 rounded-lg text-center hover:border-border-light transition duration-200">
+                        <div class="site-icon mb-2 text-2xl">🎵</div>
+                        <div class="site-name text-text-primary text-sm font-medium">Spotify</div>
+                    </div>
+                </div>
+
+                <!-- No Results -->
+                <div id="noResults" class="hidden text-center py-8">
+                    <p class="text-text-secondary">No sites found matching your search.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Formats Section -->
+    <section class="max-w-5xl mx-auto">
+        <div class="card">
+            <div class="p-6 md:p-8">
+                <h2 class="text-2xl font-semibold mb-6">Supported Formats</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-bg-hover border border-border-subtle p-5 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-bg-card w-8 h-8 rounded-md flex items-center justify-center mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent-blue" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-medium text-text-primary">Video Formats</h3>
+                        </div>
+                        <ul class="space-y-2 text-text-secondary text-sm">
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                MP4 (H.264, H.265)
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                WebM (VP8, VP9)
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                MKV
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                FLV
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                AVI
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                MOV
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-bg-hover border border-border-subtle p-5 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-bg-card w-8 h-8 rounded-md flex items-center justify-center mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent-blue" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5.983 5.983 0 0115 10a5.984 5.984 0 01-1.757 4.243 1 1 0 01-1.415-1.415A3.984 3.984 0 0013 10a3.983 3.983 0 00-1.172-2.828 1 1 0 010-1.415z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-medium text-text-primary">Audio Formats</h3>
+                        </div>
+                        <ul class="space-y-2 text-text-secondary text-sm">
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                MP3
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                AAC
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                M4A
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                FLAC
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                Opus
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                Vorbis
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-bg-hover border border-border-subtle p-5 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-bg-card w-8 h-8 rounded-md flex items-center justify-center mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent-blue" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-medium text-text-primary">Quality Options</h3>
+                        </div>
+                        <ul class="space-y-2 text-text-secondary text-sm">
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                Best Quality
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                1080p Full HD
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                720p HD
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                Audio Only
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                Custom Format Selection
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-1.5 h-1.5 bg-accent-blue rounded-full mr-2"></span>
+                                Subtitles & Captions
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Stats Section -->
+    <section class="max-w-5xl mx-auto">
+        <div class="card">
+            <div class="p-6 md:p-8">
+                <h2 class="text-2xl font-semibold mb-6">Platform Stats</h2>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-bg-hover border border-border-subtle p-4 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-bg-card rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent-blue" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-xs text-text-tertiary uppercase font-medium mb-1">Total Sites</div>
+                                <div class="text-xl text-text-primary font-semibold">1,200+</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-bg-hover border border-border-subtle p-4 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-bg-card rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent-blue" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-xs text-text-tertiary uppercase font-medium mb-1">Max Quality</div>
+                                <div class="text-xl text-text-primary font-semibold">4K / 8K</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-bg-hover border border-border-subtle p-4 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-bg-card rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent-blue" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M5 2a1 1 0 00-1 1v1h1a1 1 0 010 2H4v1a1 1 0 001 1h5a1 1 0 001-1V3a1 1 0 00-1-1H5zM3 9a1 1 0 011-1h5a1 1 0 011 1v5a1 1 0 01-1 1H4a1 1 0 01-1-1v-5z" clip-rule="evenodd" />
+                                    <path d="M13 11a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2a2 2 0 012-2h2z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-xs text-text-tertiary uppercase font-medium mb-1">Formats</div>
+                                <div class="text-xl text-text-primary font-semibold">20+</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-bg-hover border border-border-subtle p-4 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-bg-card rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent-blue" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-xs text-text-tertiary uppercase font-medium mb-1">Updates</div>
+                                <div class="text-xl text-text-primary font-semibold">Daily</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Request New Site Section -->
+    <section class="max-w-3xl mx-auto py-10">
+        <div class="card">
+            <div class="p-6 text-center">
+                <div class="inline-flex items-center justify-center w-14 h-14 bg-bg-hover border border-border-subtle rounded-full mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent-blue" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Can't find a site?</h3>
+                <p class="text-text-secondary mb-6 max-w-lg mx-auto">
+                    If a site you need isn't supported yet, you can request it on our GitHub repository. Our team regularly adds support for new platforms.
+                </p>
+                <a href="https://github.com/yourusername/tus-dl/issues/new" target="_blank" class="glass-btn px-6 py-2 rounded-lg inline-flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    Request a Site
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Home CTA -->
+    <section class="text-center py-8">
+        <a href="/" class="primary-btn px-8 py-4 rounded-lg font-medium inline-flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clip-rule="evenodd" />
+            </svg>
+            Start Downloading
+        </a>
+    </section>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Category tabs functionality
+        const siteCategories = {
+            popular: ["YouTube", "Instagram", "TikTok", "Twitter", "Facebook", "Vimeo", "Dailymotion", "SoundCloud", "Reddit", "Twitch", "Snapchat", "Spotify"],
+            video: ["YouTube", "Vimeo", "Dailymotion", "Bilibili", "Niconico", "Vevo", "Metacafe", "Veoh", "Bitchute", "Lbry.tv", "PeerTube", "DTube"],
+            social: ["Instagram", "TikTok", "Twitter", "Facebook", "Reddit", "Pinterest", "Snapchat", "LinkedIn", "Tumblr", "Threads", "WeChat", "VK"],
+            music: ["SoundCloud", "Spotify", "Bandcamp", "Apple Music", "Deezer", "Tidal", "Amazon Music", "Mixcloud", "Last.fm", "Audiomack", "YouTube Music", "Pandora"],
+            learning: ["Udemy", "Coursera", "Khan Academy", "TED", "edX", "Skillshare", "MIT OpenCourseWare", "Lynda", "Pluralsight", "Masterclass", "Brilliant", "Duolingo"],
+            tv: ["Netflix", "Hulu", "HBO Max", "Disney+", "Amazon Prime", "Paramount+", "Crunchyroll", "PBS", "Peacock", "Apple TV+", "Funimation", "CuriosityStream"],
+            live: ["Twitch", "YouTube Live", "Facebook Live", "Instagram Live", "TikTok Live", "Kick", "Rumble Live", "Vimeo Live", "Periscope", "Livestream", "Mixer", "Vaughn Live"]
+        };
+
+        // Get DOM elements
+        const sitesGrid = document.getElementById('sitesGrid');
+        const noResults = document.getElementById('noResults');
+        const categoryTabs = document.querySelectorAll('[data-category]');
+        const searchInput = document.getElementById('siteSearch');
+
+        // Get icon for a site
+        function getIconForSite(site) {
+            const iconMap = {
+                'YouTube': '📺',
+                'Vimeo': '🎬',
+                'TikTok': '🎵',
+                'Instagram': '📸',
+                'Twitter': '🐦',
+                'Facebook': '👥',
+                'Twitch': '🎮',
+                'Reddit': '🤖',
+                'SoundCloud': '🎧',
+                'Spotify': '🎵',
+                'Netflix': '🍿',
+                'Udemy': '🎓',
+                'LinkedIn': '💼',
+                'Pinterest': '📌',
+                'Snapchat': '📱',
+                'default': '🌐'
+            };
+
+            return iconMap[site] || iconMap.default;
+        }
+
+        // Display sites for a category
+        function displaySites(category, searchTerm = '') {
+            // Clear the grid
+            sitesGrid.innerHTML = '';
+
+            // Get sites for the selected category
+            let sites = siteCategories[category] || [];
+
+            // Filter by search term if provided
+            if (searchTerm) {
+                sites = sites.filter(site => site.toLowerCase().includes(searchTerm.toLowerCase()));
+
+                // If no results in current category, search all categories
+                if (sites.length === 0) {
+                    sites = [];
+                    for (const cat in siteCategories) {
+                        const matchingSites = siteCategories[cat].filter(site =>
+                            site.toLowerCase().includes(searchTerm.toLowerCase())
+                        );
+                        sites.push(...matchingSites);
+                    }
+
+                    // Remove duplicates
+                    sites = [...new Set(sites)];
+                }
+            }
+
+            // Toggle no results message
+            if (sites.length === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            // Create site cards
+            sites.forEach(site => {
+                const siteCard = document.createElement('div');
+                siteCard.className = 'site-card bg-bg-hover border border-border-subtle p-4 rounded-lg text-center hover:border-border-light transition duration-200';
+                siteCard.innerHTML = `
+                    <div class="site-icon mb-2 text-2xl">${getIconForSite(site)}</div>
+                    <div class="site-name text-text-primary text-sm font-medium">${site}</div>
+                `;
+                sitesGrid.appendChild(siteCard);
+            });
+        }
+
+        // Initialize category tabs
+        categoryTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Update active state
+                categoryTabs.forEach(t => {
+                    t.classList.remove('active', 'bg-bg-hover', 'text-text-primary');
+                    t.classList.add('bg-bg-hover/50', 'text-text-secondary');
+                });
+                this.classList.add('active', 'bg-bg-hover', 'text-text-primary');
+                this.classList.remove('bg-bg-hover/50', 'text-text-secondary');
+
+                // Display sites for this category
+                const category = this.dataset.category;
+                displaySites(category, searchInput.value);
+            });
+        });
+
+        // Initialize search
+        searchInput.addEventListener('input', function() {
+            const activeCategory = document.querySelector('[data-category].active').dataset.category;
+            displaySites(activeCategory, this.value);
+        });
+    });
+</script>
+{% endblock %}
