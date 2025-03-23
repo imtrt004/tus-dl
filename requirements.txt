@@ -4,3 +4,4 @@ werkzeug
 ffmpeg-python
 requests
 humanize
+gunicorn
